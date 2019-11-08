@@ -43,38 +43,23 @@ function move(){
 			break;
 	}
 	// trim
-	if(tailsx[0]>window.innerWidth-incr){
+	if(tailsx[0]>Math.floor(Math.random()*window.innerWidth/incr)*incr-incr){
 		tailsx[0]=0;
 	}
 	if(tailsx[0]<0){
-		tailsx[0]=window.innerWidth-incr;
+		tailsx[0]=Math.floor(Math.random()*window.innerWidth/incr)*incr-incr;
 	}
-	if(tailsy[0]>window.innerHeight-incr){
+	if(tailsy[0]>Math.floor(Math.random()*window.innerHeight/incr)*incr-incr){
 		tailsy[0]=0;
 	}
 	if(tailsy[0]<0){
-		tailsy[0]=window.innerHeight-incr;
+		tailsy[0]=Math.floor(Math.random()*window.innerHeight/incr)*incr-incr;
 	}
 	// logic
 	if(tailsx[0]===pointx&&tailsy[0]===pointy){
 		appendTails();
 		console.log("Yummy!");
-		var ok;
-		while(ok!==0){
-			ok=0;
-			pointx=Math.floor(Math.random()*(window.innerWidth-incr)/incr)*incr;
-			pointy=Math.floor(Math.random()*(window.innerHeight-incr)/incr)*incr;
-			for(var m=0;m<numtails;m++){
-				if(tailsx[m]===pointx && tailsy[m]===pointy){
-					ok++;
-				}
-			}
-			for(var n=0;n<numwalls;n++){
-				if(pointx===wallsx[n] && pointy===wallsy[n]){
-					ok++;
-				}
-			}
-		}
+		randpos();
 	}
 	for(var j=numtails;j>0;j--){
 		tailsx[j]=tailsx[j-1];
@@ -104,6 +89,25 @@ function move(){
 function tp(x=tailsx[0],y=tailsy[0]){
 	tailsx[0]=x;
 	tailsy[0]=y;
+}
+
+function randpos(){
+	var ok;
+	while(ok!==0){
+		ok=0;
+		pointx=Math.floor(Math.random()*(window.innerWidth-incr)/incr)*incr;
+		pointy=Math.floor(Math.random()*(window.innerHeight-incr)/incr)*incr;
+		for(var m=0;m<numtails;m++){
+			if(tailsx[m]===pointx && tailsy[m]===pointy){
+				ok++;
+			}
+		}
+		for(var n=0;n<numwalls;n++){
+			if(pointx===wallsx[n] && pointy===wallsy[n]){
+				ok++;
+			}
+		}
+	}
 }
 
 function getKey(event){
