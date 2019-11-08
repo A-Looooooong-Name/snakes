@@ -1,0 +1,22 @@
+#head{
+	background-color:red;
+	z-index:2;
+}
+.tail {
+	background-color:black;
+	width:10px;
+	height:10px;
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:1;
+}
+#point {
+	background-color:green;
+	width:10px;
+	height:10px;
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:1;
+}
